@@ -24,6 +24,7 @@ namespace DatingApp.API.Helpers
                     destination => destination.Age,
                     options => options.MapFrom(src => src.DateOfBirth.GetCurrentAge()));
 
+            CreateMap<UserForUpdateDto, User>();
 
             CreateMap<Photo, PhotosForDetailedDto>();
         }
