@@ -63,6 +63,8 @@ namespace DatingApp.API
                     };
                 });
 
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             services.AddControllers(setupAction =>
             {
                 // This will return 406 if media type is not supported by API

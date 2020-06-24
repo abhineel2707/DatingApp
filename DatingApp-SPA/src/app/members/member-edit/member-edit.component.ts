@@ -16,6 +16,8 @@ export class MemberEditComponent implements OnInit {
 
   user: User;
 
+  photoUrl: string;
+
   // we will not have control over the text message as it is browser specific
   @HostListener('window: beforeunload', ['$event'])
   unloadNotification($event: any) {
@@ -35,6 +37,9 @@ export class MemberEditComponent implements OnInit {
     this.route.data.subscribe((data) => {
       this.user = data.user;
     });
+    this.authService.currentPhotoUrl.subscribe(
+      (photoUrl) => (this.photoUrl = photoUrl)
+    );
   }
 
   updateUser() {
@@ -50,4 +55,8 @@ export class MemberEditComponent implements OnInit {
         }
       );
   }
+  // keeping this code for output event emitter understanding
+  // updateMainPhoto(photoUrl: string) {
+  //   this.user.photoUrl = photoUrl;
+  // }
 }
